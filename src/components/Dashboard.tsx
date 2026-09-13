@@ -59,11 +59,11 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: '2rem' }}>
+      <div className="responsive-layout">
         {/* Main Chart Area */}
-        <div style={{ flex: 3, minWidth: 0 }}>
+        <div className="responsive-chart-area">
           {viewMode === 'grid' ? (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridAutoRows: '350px', gap: '1rem' }}>
+            <div className="responsive-grid">
               {visibleCharts.line && <LineChart />}
               {visibleCharts.bar && <BarChart />}
               {visibleCharts.scatter && <ScatterPlot />}
@@ -102,7 +102,7 @@ export default function Dashboard() {
         </div>
 
         {/* Data Table Area */}
-        <div style={{ flex: 1, minWidth: '350px', height: '716px' }}>
+        <div className="responsive-table-area">
           <DataTable />
         </div>
       </div>

@@ -178,3 +178,54 @@ body {
   z-index: 2;
   pointer-events: none; /* Let clicks pass to canvas if needed */
 }
+
+/* Responsive Layout Classes */
+.responsive-layout {
+  display: flex;
+  gap: 2rem;
+  flex-direction: row;
+}
+
+.responsive-chart-area {
+  flex: 3;
+  min-width: 0;
+}
+
+.responsive-table-area {
+  flex: 1;
+  min-width: 350px;
+  height: 716px;
+}
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 350px;
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .responsive-layout {
+    flex-direction: column;
+  }
+  .responsive-table-area {
+    min-width: 100%;
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 300px;
+  }
+  .dashboard-container {
+    padding: 1rem;
+  }
+  .dashboard-title {
+    font-size: 1.75rem;
+  }
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
