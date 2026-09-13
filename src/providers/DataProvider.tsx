@@ -115,6 +115,15 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     }
   }, [isPaused, activeLoad]);
 
+  // Reset the ring buffer cursor whenever the stress-load size changes.
+  // bufferIndexRef/dataLengthRef are wrapped modulo the CURRENT activeLoad, so
+  // carrying over a cursor computed under the old modulus produces stale,
+  // non-contiguous reads for consumers until it happens to realign.
+  useEffect(() => {
+    bufferIndexRef.current = 0;
+    dataLengthRef.current = 0;
+  }, [activeLoad]);
+
   const value = useMemo(() => ({
     dataBufferRef,
     bufferIndexRef,

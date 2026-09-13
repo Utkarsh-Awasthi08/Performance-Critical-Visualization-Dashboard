@@ -34,8 +34,15 @@ const DataRow = React.memo(({ i, time, val, ROW_HEIGHT }: { i: number, time: num
 
 export default function DataTable() {
   const { dataBufferRef, bufferIndexRef, dataLengthRef, maxPoints } = useDataContext();
-  
+
   const [frozenState, setFrozenState] = useState<{ length: number; currentIndex: number } | null>(null);
+
+  // A frozen snapshot's indices are only valid under the maxPoints modulus that was
+  // active when it was captured. If the stress-load size changes while scrolled away
+  // from the top, drop the snapshot rather than reading it against a new modulus.
+  useEffect(() => {
+    setFrozenState(null);
+  }, [maxPoints]);
 
   const length = dataLengthRef.current;
   // If frozen, use the frozen length so the scrollbar doesn't jump
