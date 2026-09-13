@@ -2,6 +2,8 @@
 
 A high-performance, real-time data visualization dashboard engineered to render **10,000 to 100,000 active data points at a sustained 60 FPS**.
 
+🚀 **Live Demo:** [https://performancecriticalvisualizationdas.vercel.app](https://performancecriticalvisualizationdas.vercel.app)
+
 By leveraging a **hybrid HTML5 Canvas + SVG rendering engine**, background **Web Workers**, and strict **zero-allocation typed array memory management**, this dashboard pushes the boundaries of browser-based data streaming without relying on third-party charting libraries.
 
 ---
